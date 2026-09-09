@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mauli Enterprises | Xerox & Printing Center</title>
+
+<meta name="description"
+content="Mauli Enterprises - Premium Xerox, Printing, Aadhaar, PAN Card and Digital Services in Shivane, Maval.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#080808;
+    color:white;
+}
+
+/* GOLD VARIABLES */
+:root{
+    --gold:#d4af37;
+    --lightgold:#f7d774;
+    --black:#080808;
+    --card:#121212;
+}
+
+/* HEADER */
+
+header{
+    padding:22px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#080808;
+    border-bottom:1px solid rgba(212,175,55,.4);
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:2px;
+    color:var(--lightgold);
+}
+
+.logo span{
+    display:block;
+    font-size:11px;
+    letter-spacing:4px;
+    color:white;
+    margin-top:3px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--lightgold);
+}
+
+/* HERO */
+
+.hero{
+    min-height:88vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px 20px;
+    background:
+    radial-gradient(circle at center,
+    rgba(212,175,55,.18),
+    transparent 45%),
+    #080808;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.crown{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(40px,8vw,78px);
+    letter-spacing:5px;
+    font-weight:900;
+    background:linear-gradient(
+        90deg,
+        #9c7c20,
+        #fff0a6,
+        #d4af37,
+        #fff0a6,
+        #9c7c20
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero h2{
+    font-size:clamp(18px,4vw,30px);
+    margin-top:12px;
+    letter-spacing:4px;
+}
+
+.hero p{
+    color:#bbb;
+    margin:20px auto;
+    font-size:17px;
+    max-width:650px;
+    line-height:1.7;
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 28px;
+    margin:7px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.gold-btn{
+    color:#080808;
+    background:linear-gradient(135deg,#9c7c20,#f7d774,#d4af37);
+}
+
+.outline-btn{
+    color:white;
+    border:1px solid var(--gold);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(212,175,55,.25);
+}
+
+/* PHONE */
+
+.phone{
+    margin-top:28px;
+    font-size:22px;
+    font-weight:bold;
+    color:var(--lightgold);
+    letter-spacing:2px;
+}
+
+/* SECTION */
+
+section{
+    padding:80px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:38px;
+    color:var(--lightgold);
+}
+
+.section-title p{
+    color:#999;
+    margin-top:10px;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+}
+
+.service{
+    background:linear-gradient(
+        145deg,
+        #171717,
+        #0d0d0d
+    );
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:18px;
+    padding:30px 22px;
+    text-align:center;
+    transition:.4s;
+}
+
+.service:hover{
+    transform:translateY(-8px);
+    border-color:var(--gold);
+    box-shadow:0 15px 40px rgba(212,175,55,.12);
+}
+
+.icon{
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.service h3{
+    color:var(--lightgold);
+    margin-bottom:10px;
+}
+
+.service p{
+    color:#aaa;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* ABOUT */
+
+.about-box{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    border-radius:20px;
+    background:#111;
+    border:1px solid rgba(212,175,55,.3);
+    text-align:center;
+}
+
+.about-box p{
+    color:#bbb;
+    line-height:1.9;
+    margin:10px;
+}
+
+.highlight{
+    color:var(--lightgold);
+    font-weight:bold;
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.16),
+        transparent 60%
+    );
+}
+
+.contact-card{
+    max-width:650px;
+    margin:auto;
+    padding:40px 25px;
+    border:1px solid var(--gold);
+    border-radius:20px;
+    background:#0d0d0d;
+}
+
+.contact-card h2{
+    color:var(--lightgold);
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.contact-info{
+    margin:15px 0;
+    color:#ccc;
+}
+
+.big-number{
+    font-size:28px;
+    color:#f7d774;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin:20px 0;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px 15px;
+    border-top:1px solid rgba(212,175,55,.25);
+    color:#777;
+}
+
+footer strong{
+    color:var(--lightgold);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav a{
+        margin:0 7px;
+        font-size:12px;
+    }
+
+    .hero{
+        min-height:80vh;
+    }
+
+    .hero h1{
+        letter-spacing:2px;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+
+    .about-box{
+        padding:25px 18px;
+    }
+
+    .big-number{
+        font-size:23px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        MAULI ENTERPRISES
+        <span>XEROX • PRINTING • DIGITAL SERVICES</span>
+    </div>
+
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="crown">👑</div>
+
+        <h1>MAULI ENTERPRISES</h1>
+
+        <h2>XEROX & PRINTING CENTER</h2>
+
+        <p>
+            Your trusted destination for
+            <strong>Printing, Xerox, Aadhaar,
+            PAN Card and Digital Online Services.</strong>
+        </p>
+
+        <div class="buttons">
+
+            <a href="tel:+918390778407"
+               class="btn gold-btn">
+                📞 CALL NOW
+            </a>
+
+            <a href="https://wa.me/918390778407"
+               target="_blank"
+               class="btn outline-btn">
+                💬 WHATSAPP
+            </a>
+
+        </div>
+
+        <div class="phone">
+            📱 8390778407
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+    <div class="section-title">
+
+        <h2>OUR SERVICES</h2>
+
+        <p>
+            Professional • Fast • Reliable
+        </p>
+
+    </div>
+
+
+    <div class="services">
+
+        <div class="service">
+            <div class="icon">📄</div>
+            <h3>XEROX</h3>
+            <p>
+                Black & White and Colour Xerox
+                services.
+            </p>
+        </div>
+
+
+        <div class="service">
+            <div class="icon">🖨️</div>
+            <h3>PRINTING</h3>
+            <p>
+                Colour and Black & White
+                document printing.
+            </p>
+        </div>
+
+
+        <div class="service">
+            <div class="icon">🪪</div>
+            <h3>AADHAAR SERVICES</h3>
+            <p>
+                Aadhaar mobile number update
+                and download assistance.
+            </p>
+        </div>
+
+
+        <div class="service">
+            <div class="icon">🆔</div>
+            <h3>PAN CARD</h3>
+            <p>
+                PAN card application and
+                related services.
+            </p>
+        </div>
+
+
+        <div class="service">
+            <div class="icon">💻</div>
+            <h3>DIGITAL SERVICES</h3>
+            <p>
+                Online forms and various
+                digital services.
+            </p>
+        </div>
+
+
+        <div class="service">
+            <div class="icon">🏢</div>
+            <h3>BUSINESS SERVICES</h3>
+            <p>
+                Shop Act, Udyam and
+                business assistance.
+            </p>
+        </div>
+
+
+        <div class="service">
+            <div class="icon">🪪</div>
+            <h3>ID CARD PRINTING</h3>
+            <p>
+                Professional ID card
+                design and printing.
+            </p>
+        </div>
+
+
+        <div class="service">
+            <div class="icon">📑</div>
+            <h3>DOCUMENT SERVICES</h3>
+            <p>
+                Scanning, printing and
+                document assistance.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="section-title">
+
+        <h2>ABOUT MAULI ENTERPRISES</h2>
+
+    </div>
+
+    <div class="about-box">
+
+        <p>
+            Welcome to
+            <span class="highlight">
+                Mauli Enterprises
+            </span>
+            — your trusted Xerox, Printing and
+            Digital Service Center.
+        </p>
+
+        <p>
+            We provide reliable and convenient
+            services for everyday documentation,
+            Aadhaar, PAN Card, printing and
+            online digital requirements.
+        </p>
+
+        <p>
+            📍 Shivane, Maval, Maharashtra
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="contact-card">
+
+        <h2>CONTACT US</h2>
+
+        <div class="contact-info">
+            🏪 Mauli Enterprises
+        </div>
+
+        <div class="contact-info">
+            📍 Shivane, Maval, Maharashtra
+        </div>
+
+        <div class="big-number">
+            📱 8390778407
+        </div>
+
+        <a href="tel:+918390778407"
+           class="btn gold-btn">
+            📞 CALL NOW
+        </a>
+
+        <a href="https://wa.me/918390778407"
+           target="_blank"
+           class="btn outline-btn">
+            💬 WHATSAPP US
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026
+    <strong>Mauli Enterprises</strong>
+    <br>
+    Xerox & Printing Center
+    <br><br>
+    All Rights Reserved.
+
+</footer>
+
+
+</body>
+</html>
