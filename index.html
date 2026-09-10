@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mauli Enterprises | Login</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:linear-gradient(135deg,#eef4ff,#ffffff,#f4edff);
+}
+
+.login-box{
+    width:100%;
+    max-width:400px;
+    background:#fff;
+    padding:38px 30px;
+    border-radius:28px;
+    text-align:center;
+    border:1px solid #e5e9f2;
+    box-shadow:0 20px 60px rgba(30,50,90,.15);
+}
+
+.logo{
+    font-size:34px;
+    font-weight:800;
+    background:linear-gradient(90deg,#0066ff,#8e2de2,#ff4b2b);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.shop-name{
+    margin-top:8px;
+    font-size:15px;
+    color:#687386;
+}
+
+.location{
+    margin-top:7px;
+    color:#0066ff;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.icon{
+    font-size:55px;
+    margin:22px 0 10px;
+}
+
+h2{
+    color:#172033;
+    margin-bottom:7px;
+}
+
+.subtitle{
+    color:#697386;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.input-box{
+    text-align:left;
+    margin-bottom:17px;
+}
+
+.input-box label{
+    display:block;
+    font-size:14px;
+    font-weight:bold;
+    color:#172033;
+    margin-bottom:7px;
+}
+
+.input-box input{
+    width:100%;
+    padding:14px 15px;
+    border:1px solid #dce1eb;
+    border-radius:13px;
+    outline:none;
+    font-size:15px;
+    transition:.2s;
+}
+
+.input-box input:focus{
+    border-color:#0066ff;
+    box-shadow:0 0 0 3px rgba(0,102,255,.10);
+}
+
+/* PASSWORD + EYE */
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    padding-right:55px;
+}
+
+.eye-btn{
+    position:absolute;
+    right:6px;
+    top:50%;
+    transform:translateY(-50%);
+    width:42px;
+    height:42px;
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    font-size:20px;
+    border-radius:10px;
+}
+
+.eye-btn:hover{
+    background:#f1f4f9;
+}
+
+.login-btn{
+    width:100%;
+    border:none;
+    padding:15px;
+    border-radius:14px;
+    background:linear-gradient(90deg,#0066ff,#8e2de2);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,102,255,.22);
+    margin-top:5px;
+    transition:.2s;
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+}
+
+.error{
+    display:none;
+    margin-top:15px;
+    padding:11px;
+    border-radius:10px;
+    background:#fff0f0;
+    color:#d60000;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.footer{
+    margin-top:25px;
+    font-size:12px;
+    color:#8a93a3;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <div class="logo">
+        Mauli Enterprises
+    </div>
+
+    <div class="shop-name">
+        Xerox and Printing Shop
+    </div>
+
+    <div class="location">
+        📍 Shivane, Maval
+    </div>
+
+    <div class="icon">
+        🔐
+    </div>
+
+    <h2>Welcome Back</h2>
+
+    <div class="subtitle">
+        Login to access our online services
+    </div>
+
+    <form onsubmit="login(event)">
+
+        <!-- USERNAME -->
+        <div class="input-box">
+
+            <label>User ID</label>
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter User ID"
+                autocomplete="username"
+                required
+            >
+
+        </div>
+
+
+        <!-- PASSWORD -->
+        <div class="input-box">
+
+            <label>Password</label>
+
+            <div class="password-box">
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter Password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="eye-btn"
+                    onclick="togglePassword()"
+                    aria-label="Show password">
+                    👁️
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN BUTTON -->
+        <button
+            class="login-btn"
+            type="submit">
+            Login →
+        </button>
+
+    </form>
+
+
+    <!-- ERROR MESSAGE -->
+    <div class="error" id="error">
+        ❌ Invalid User ID or Password
+    </div>
+
+
+    <div class="footer">
+        © 2026 Mauli Enterprises
+    </div>
+
+</div>
+
+
+<script>
+
+/* LOGIN */
+
+function login(event){
+
+    event.preventDefault();
+
+    const username =
+        document.getElementById("username").value;
+
+    const password =
+        document.getElementById("password").value;
+
+
+    /* YOUR LOGIN DETAILS */
+
+    const correctUsername = "Mauli enterprises";
+    const correctPassword = "Avi1828@";
+
+
+    if(
+        username === correctUsername &&
+        password === correctPassword
+    ){
+
+        window.location.href = "main.html";
+
+    }else{
+
+        document.getElementById("error").style.display = "block";
+
+    }
+
+}
+
+
+/* SHOW / HIDE PASSWORD */
+
+function togglePassword(){
+
+    const password =
+        document.getElementById("password");
+
+    const eye =
+        document.querySelector(".eye-btn");
+
+
+    if(password.type === "password"){
+
+        password.type = "text";
+
+        eye.textContent = "🙈";
+
+        eye.setAttribute(
+            "aria-label",
+            "Hide password"
+        );
+
+    }else{
+
+        password.type = "password";
+
+        eye.textContent = "👁️";
+
+        eye.setAttribute(
+            "aria-label",
+            "Show password"
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
