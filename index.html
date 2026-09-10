@@ -1,631 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mauli Enterprises | Xerox & Printing Shop</title>
+<title>Mauli Enterprises | Xerox & Printing Shop</title>
 
-    <meta name="description"
-          content="Mauli Enterprises Xerox and Printing Shop in Shivane, Maval. Xerox, printing, online services, Aadhaar, PAN Card, PF Seva and government scheme services.">
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+body{
+    background:#f7f9fc;
+    color:#172033;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #222;
-            line-height: 1.6;
-        }
+header{
+    background:linear-gradient(135deg,#ffffff,#eef4ff);
+    padding:35px 20px;
+    text-align:center;
+    border-bottom:1px solid #e5e9f2;
+}
 
-        /* HEADER */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.97);
-            box-shadow: 0 3px 20px rgba(0,0,0,0.08);
-        }
+.logo{
+    font-size:38px;
+    font-weight:800;
+    background:linear-gradient(90deg,#0066ff,#8e2de2,#ff4b2b);
+    -webkit-background-clip:text;
+    color:transparent;
+}
 
-        .navbar {
-            max-width: 1200px;
-            margin: auto;
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.subtitle{
+    margin-top:8px;
+    font-size:17px;
+    color:#596579;
+}
 
-        .logo {
-            font-size: 22px;
-            font-weight: 900;
-            background: linear-gradient(90deg,#ff512f,#dd2476,#6a11cb);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
+.location{
+    margin-top:8px;
+    color:#0066ff;
+    font-weight:bold;
+}
 
-        .logo span {
-            display: block;
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #555;
-            background: none;
-        }
+.buttons{
+    margin-top:22px;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 700;
-            margin-left: 22px;
-        }
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    margin:6px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    color:white;
+    background:#111827;
+    box-shadow:0 7px 20px rgba(0,0,0,.12);
+}
 
-        nav a:hover {
-            color: #dd2476;
-        }
+.btn.whatsapp{
+    background:#20b15a;
+}
 
-        /* HERO */
-        .hero {
-            min-height: 650px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 70px 20px;
-            background:
-                radial-gradient(circle at top left, #fff1f2, transparent 35%),
-                radial-gradient(circle at bottom right, #eef2ff, transparent 35%),
-                #fff;
-        }
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:35px 18px;
+}
 
-        .hero-content {
-            max-width: 900px;
-        }
+.heading{
+    text-align:center;
+    margin-bottom:25px;
+}
 
-        .badge {
-            display: inline-block;
-            padding: 9px 18px;
-            border-radius: 50px;
-            background: #f3f4f6;
-            color: #555;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+.heading h2{
+    font-size:30px;
+}
 
-        .hero h1 {
-            font-size: clamp(42px, 8vw, 82px);
-            font-weight: 950;
-            line-height: 1;
-            background: linear-gradient(
-                90deg,
-                #ff512f,
-                #f09819,
-                #dd2476,
-                #6a11cb
-            );
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 18px;
-        }
+.heading p{
+    margin-top:7px;
+    color:#697386;
+}
 
-        .hero h2 {
-            font-size: clamp(24px, 4vw, 40px);
-            margin-bottom: 15px;
-            color: #222;
-        }
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
 
-        .hero p {
-            font-size: 18px;
-            color: #666;
-            max-width: 700px;
-            margin: auto;
-        }
+.service{
+    display:block;
+    text-decoration:none;
+    color:#172033;
+    background:white;
+    padding:25px 20px;
+    border-radius:20px;
+    border:1px solid #e8ebf2;
+    box-shadow:0 8px 25px rgba(30,50,90,.08);
+    transition:.25s;
+}
 
-        /* BUTTONS */
-        .buttons {
-            margin-top: 32px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+.service:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(30,50,90,.15);
+}
 
-        .btn {
-            display: inline-block;
-            padding: 14px 26px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            transition: 0.3s;
-        }
+.icon{
+    font-size:38px;
+    margin-bottom:12px;
+}
 
-        .btn-primary {
-            background: linear-gradient(135deg,#ff512f,#dd2476);
-            color: white;
-            box-shadow: 0 8px 25px rgba(221,36,118,0.25);
-        }
+.service h3{
+    font-size:20px;
+    margin-bottom:7px;
+}
 
-        .btn-secondary {
-            background: #25D366;
-            color: white;
-            box-shadow: 0 8px 25px rgba(37,211,102,0.22);
-        }
+.service p{
+    color:#687386;
+    font-size:14px;
+    line-height:1.5;
+}
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-        }
+.arrow{
+    display:block;
+    margin-top:15px;
+    color:#0066ff;
+    font-weight:bold;
+}
 
-        /* SECTIONS */
-        section {
-            padding: 75px 20px;
-        }
+.contact{
+    margin-top:40px;
+    background:linear-gradient(135deg,#111827,#263b63);
+    color:white;
+    padding:35px 20px;
+    border-radius:25px;
+    text-align:center;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
+.contact h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 45px;
-            font-weight: 900;
-        }
+.contact p{
+    color:#dce4f5;
+    margin-bottom:18px;
+}
 
-        .section-title span {
-            background: linear-gradient(90deg,#ff512f,#6a11cb);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        /* SERVICES */
-        .services {
-            background: #fafafa;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px 22px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
-            border: 1px solid #eee;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
-
-        .icon {
-            width: 65px;
-            height: 65px;
-            margin: 0 auto 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 18px;
-            font-size: 30px;
-            background: linear-gradient(135deg,#fff1f2,#eef2ff);
-        }
-
-        .card h3 {
-            margin-bottom: 8px;
-            font-size: 21px;
-        }
-
-        .card p {
-            color: #777;
-            font-size: 14px;
-        }
-
-        /* ABOUT */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-box {
-            padding: 35px;
-            border-radius: 25px;
-            background: linear-gradient(135deg,#fff7ed,#f5f3ff);
-        }
-
-        .about-box h3 {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .about-box p {
-            color: #666;
-        }
-
-        .features {
-            display: grid;
-            gap: 15px;
-        }
-
-        .feature {
-            padding: 18px;
-            border-radius: 15px;
-            background: #fff;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-            font-weight: 700;
-        }
-
-        /* CONTACT */
-        .contact {
-            background: #111827;
-            color: white;
-        }
-
-        .contact .section-title {
-            color: white;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .contact-card {
-            padding: 30px;
-            text-align: center;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .contact-card .icon {
-            background: rgba(255,255,255,0.12);
-        }
-
-        .contact-card h3 {
-            margin-bottom: 8px;
-        }
-
-        .contact-card p,
-        .contact-card a {
-            color: #ddd;
-            text-decoration: none;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #080b12;
-            color: #aaa;
-            text-align: center;
-            padding: 25px 15px;
-            font-size: 14px;
-        }
-
-        footer strong {
-            color: white;
-        }
-
-        /* MOBILE */
-        @media (max-width: 800px) {
-
-            nav {
-                display: none;
-            }
-
-            .navbar {
-                justify-content: center;
-            }
-
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                min-height: 580px;
-            }
-
-            section {
-                padding: 55px 18px;
-            }
-
-            .section-title {
-                font-size: 30px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 320px;
-            }
-        }
-    </style>
+footer{
+    text-align:center;
+    padding:25px;
+    color:#687386;
+    font-size:14px;
+}
+</style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
-    <div class="navbar">
 
-        <div class="logo">
-            MAULI ENTERPRISES
-            <span>XEROX • PRINTING • ONLINE SERVICES</span>
-        </div>
+<div class="logo">
+Mauli Enterprises
+</div>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+<div class="subtitle">
+Xerox and Printing Shop
+</div>
 
-    </div>
+<div class="location">
+📍 Shivane, Maval
+</div>
+
+<div class="buttons">
+
+<a class="btn"
+href="tel:8390778407">
+📞 Call Now
+</a>
+
+<a class="btn whatsapp"
+href="https://wa.me/918390778407?text=Hello%20Mauli%20Enterprises"
+target="_blank">
+💬 WhatsApp
+</a>
+
+</div>
+
 </header>
 
 
-<!-- HERO -->
-<section class="hero" id="home">
+<div class="container">
 
-    <div class="hero-content">
-
-        <div class="badge">
-            ✓ Trusted Local Digital Services
-        </div>
-
-        <h1>MAULI<br>ENTERPRISES</h1>
-
-        <h2>Xerox & Printing Shop</h2>
-
-        <p>
-            Professional Xerox, Printing and Online Services
-            at one convenient place in Shivane, Maval.
-        </p>
-
-        <div class="buttons">
-
-            <!-- CALL NOW -->
-            <a href="tel:8390778407" class="btn btn-primary">
-                📞 Call Now
-            </a>
-
-            <!-- WHATSAPP -->
-            <a href="https://wa.me/918390778407"
-               target="_blank"
-               class="btn btn-secondary">
-                💬 WhatsApp
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
+<div class="heading">
+<h2>Our Online Services</h2>
+<p>Click any service to open the related portal</p>
+</div>
 
 
-<!-- SERVICES -->
-<section class="services" id="services">
-
-    <div class="container">
-
-        <div class="section-title">
-            Our <span>Services</span>
-        </div>
-
-        <div class="service-grid">
-
-            <div class="card">
-                <div class="icon">🖨️</div>
-                <h3>Xerox & Printing</h3>
-                <p>
-                    High-quality black & white and colour
-                    Xerox and printing services.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">💻</div>
-                <h3>Online Services</h3>
-                <p>
-                    Convenient online form filling and
-                    digital services.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🪪</div>
-                <h3>Aadhaar Services</h3>
-                <p>
-                    Aadhaar mobile number update and
-                    Aadhaar download assistance.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">💳</div>
-                <h3>PAN Card</h3>
-                <p>
-                    New PAN Card and PAN details
-                    change/update assistance.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">📄</div>
-                <h3>PF Seva</h3>
-                <p>
-                    Assistance with EPF/PF related
-                    online services.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🏛️</div>
-                <h3>Government Schemes</h3>
-                <p>
-                    Online assistance for eligible
-                    government scheme applications.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+<div class="services">
 
 
-<!-- ABOUT -->
-<section id="about">
+<!-- PAN CARD -->
+<a class="service"
+href="https://www.pan.utiitsl.com/"
+target="_blank">
 
-    <div class="container">
+<div class="icon">🪪</div>
 
-        <div class="section-title">
-            About <span>Mauli Enterprises</span>
-        </div>
+<h3>PAN Card</h3>
 
-        <div class="about">
+<p>
+New PAN • Correction • Update
+</p>
 
-            <div class="about-box">
+<span class="arrow">
+Open Portal →
+</span>
 
-                <h3>Your Local Digital Service Partner</h3>
-
-                <p>
-                    Mauli Enterprises Xerox and Printing Shop
-                    provides Xerox, printing and online digital
-                    services for customers in Shivane, Maval
-                    and nearby areas.
-                </p>
-
-                <br>
-
-                <p>
-                    Our aim is to provide convenient,
-                    professional and reliable service
-                    at one place.
-                </p>
-
-            </div>
-
-            <div class="features">
-
-                <div class="feature">
-                    ✓ Professional Service
-                </div>
-
-                <div class="feature">
-                    ✓ Convenient Online Assistance
-                </div>
-
-                <div class="feature">
-                    ✓ Xerox & Printing
-                </div>
-
-                <div class="feature">
-                    ✓ Local & Customer Friendly
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+</a>
 
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
+<!-- EPF -->
+<a class="service"
+href="https://unifiedportal-mem.epfindia.gov.in/memberinterface/"
+target="_blank">
 
-    <div class="container">
+<div class="icon">💼</div>
 
-        <div class="section-title">
-            Contact <span>Us</span>
-        </div>
+<h3>EPF / PF Seva</h3>
 
-        <div class="contact-grid">
+<p>
+UAN • PF Services • Member Portal
+</p>
 
-            <div class="contact-card">
-                <div class="icon">📞</div>
-                <h3>Call Us</h3>
-                <a href="tel:8390778407">
-                    8390778407
-                </a>
-            </div>
+<span class="arrow">
+Open Portal →
+</span>
 
-            <div class="contact-card">
-                <div class="icon">💬</div>
-                <h3>WhatsApp</h3>
-                <a href="https://wa.me/918390778407"
-                   target="_blank">
-                    Chat on WhatsApp
-                </a>
-            </div>
-
-            <div class="contact-card">
-                <div class="icon">📍</div>
-                <h3>Location</h3>
-                <p>
-                    Shivane, Maval
-                </p>
-            </div>
-
-        </div>
-
-        <div class="buttons">
-
-            <a href="tel:8390778407"
-               class="btn btn-primary">
-                📞 Call Now
-            </a>
-
-            <a href="https://wa.me/918390778407"
-               target="_blank"
-               class="btn btn-secondary">
-                💬 WhatsApp Now
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
+</a>
 
 
-<!-- FOOTER -->
+<!-- MAHADBT -->
+<a class="service"
+href="https://mahadbt.maharashtra.gov.in/"
+target="_blank">
+
+<div class="icon">🎓</div>
+
+<h3>MahaDBT</h3>
+
+<p>
+Scholarship • Government Schemes
+</p>
+
+<span class="arrow">
+Open Portal →
+</span>
+
+</a>
+
+
+<!-- MAHADBT FARMER -->
+<a class="service"
+href="https://mahadbt.maharashtra.gov.in/"
+target="_blank">
+
+<div class="icon">🌾</div>
+
+<h3>MahaDBT Farmer</h3>
+
+<p>
+Farmer Schemes • Applications
+</p>
+
+<span class="arrow">
+Open Portal →
+</span>
+
+</a>
+
+
+<!-- ITI -->
+<a class="service"
+href="https://admission.dvet.gov.in/"
+target="_blank">
+
+<div class="icon">🛠️</div>
+
+<h3>ITI Forms</h3>
+
+<p>
+ITI Admission • Online Forms
+</p>
+
+<span class="arrow">
+Open Portal →
+</span>
+
+</a>
+
+
+<!-- AADHAAR -->
+<a class="service"
+href="https://uidai.gov.in/en/my-aadhaar"
+target="_blank">
+
+<div class="icon">🆔</div>
+
+<h3>Aadhaar Download</h3>
+
+<p>
+Download Aadhaar • My Aadhaar
+</p>
+
+<span class="arrow">
+Open Portal →
+</span>
+
+</a>
+
+
+<!-- DIGITAL 7/12 -->
+<a class="service"
+href="https://bhulekh.mahabhumi.gov.in/"
+target="_blank">
+
+<div class="icon">🌾</div>
+
+<h3>Digital 7/12</h3>
+
+<p>
+7/12 Extract • Land Records
+</p>
+
+<span class="arrow">
+Open Portal →
+</span>
+
+</a>
+
+
+<!-- AAPLE SARKAR -->
+<a class="service"
+href="https://aaplesarkar.mahaonline.gov.in/"
+target="_blank">
+
+<div class="icon">🏛️</div>
+
+<h3>Aaple Sarkar</h3>
+
+<p>
+Maharashtra Government Services
+</p>
+
+<span class="arrow">
+Open Portal →
+</span>
+
+</a>
+
+
+<!-- WHATSAPP PRINTING -->
+<a class="service"
+href="https://wa.me/918390778407?text=Hello%20Mauli%20Enterprises%2C%20I%20want%20printing%20service."
+target="_blank">
+
+<div class="icon">🖨️</div>
+
+<h3>WhatsApp Printing</h3>
+
+<p>
+Send your document directly on WhatsApp
+</p>
+
+<span class="arrow">
+Send Document →
+</span>
+
+</a>
+
+
+<!-- XEROX -->
+<a class="service"
+href="https://wa.me/918390778407?text=Hello%20Mauli%20Enterprises%2C%20I%20want%20Xerox%20service."
+target="_blank">
+
+<div class="icon">📄</div>
+
+<h3>Xerox & Printing</h3>
+
+<p>
+Xerox • Colour Print • B/W Print
+</p>
+
+<span class="arrow">
+WhatsApp Now →
+</span>
+
+</a>
+
+
+</div>
+
+
+<div class="contact">
+
+<h2>Need Online Help?</h2>
+
+<p>
+Send your documents or enquiry directly on WhatsApp.
+</p>
+
+<a class="btn whatsapp"
+href="https://wa.me/918390778407?text=Hello%20Mauli%20Enterprises"
+target="_blank">
+💬 Chat on WhatsApp
+</a>
+
+</div>
+
+</div>
+
+
 <footer>
 
-    <p>
-        © 2026 <strong>Mauli Enterprises Xerox and Printing Shop</strong>
-    </p>
-
-    <p>
-        Shivane, Maval • 8390778407
-    </p>
+© 2026 Mauli Enterprises Xerox and Printing Shop  
+<br>
+Shivane, Maval
 
 </footer>
 
