@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Check Status | Mauli Enterprises</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+  color: #222;
+}
+
+header {
+  background: linear-gradient(135deg, #111827, #1d4ed8);
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+header h1 {
+  font-size: 27px;
+}
+
+header p {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 15px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+h2 {
+  text-align: center;
+  color: #1d4ed8;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#2563eb,#1d4ed8);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#result {
+  margin-top: 25px;
+}
+
+.status-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.status-card h3 {
+  color: #1d4ed8;
+  margin-bottom: 15px;
+}
+
+.info {
+  margin: 9px 0;
+  font-size: 14px;
+}
+
+.status {
+  display: inline-block;
+  background: #dcfce7;
+  color: #166534;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.action-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 9px;
+  background: #111827;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.print-btn {
+  background: #475569;
+}
+
+.back {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Mauli Enterprises</h1>
+  <p>Xerox and Printing Shop</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>🔎 Check Status</h2>
+
+<p class="subtitle">
+Check your application status and download documents
+</p>
+
+<label for="applicationNumber">
+Application / Acknowledgement Number
+</label>
+
+<input
+  type="text"
+  id="applicationNumber"
+  placeholder="Enter application number"
+>
+
+<button onclick="checkStatus()">
+  🔍 Check Status
+</button>
+
+<div id="result"></div>
+
+<a href="index.html" class="back">
+  ← Back to Home
+</a>
+
+</div>
+</div>
+
+<footer>
+© 2026 Mauli Enterprises Xerox and Printing Shop
+<br>
+📞 8390778407
+</footer>
+
+
+<script>
+
+function checkStatus() {
+
+  const appNo =
+    document.getElementById("applicationNumber").value.trim();
+
+  const result =
+    document.getElementById("result");
+
+  if (appNo === "") {
+
+    result.innerHTML = `
+      <div class="status-card">
+        <h3>⚠️ Application Number Required</h3>
+        <p>Please enter your application number.</p>
+      </div>
+    `;
+
+    return;
+  }
+
+  /*
+   DEMO DATA
+
+   Later this can be connected to
+   your real database / Google Sheet.
+  */
+
+  result.innerHTML = `
+
+    <div class="status-card">
+
+      <h3>📋 Application Details</h3>
+
+      <div class="info">
+        <strong>Application No:</strong>
+        ${appNo}
+      </div>
+
+      <div class="info">
+        <strong>Customer Name:</strong>
+        Demo Customer
+      </div>
+
+      <div class="info">
+        <strong>Service:</strong>
+        Online Service
+      </div>
+
+      <div class="info">
+        <strong>Application Date:</strong>
+        12 September 2026
+      </div>
+
+      <div class="info">
+        <strong>Status:</strong><br>
+        <span class="status">
+          🟢 Under Process
+        </span>
+      </div>
+
+      <div class="actions">
+
+        <button
+          class="action-btn"
+          onclick="downloadApplication()">
+          📄 Application Copy
+        </button>
+
+        <button
+          class="action-btn"
+          onclick="downloadAcknowledgement()">
+          🧾 Acknowledgement
+        </button>
+
+        <button
+          class="action-btn print-btn"
+          onclick="window.print()">
+          🖨️ Print
+        </button>
+
+        <a
+          class="action-btn print-btn"
+          href="tel:8390778407">
+          📞 Contact Shop
+        </a>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function downloadApplication() {
+
+  alert(
+    "Application Copy PDF will be available after connecting your application database."
+  );
+
+}
+
+
+function downloadAcknowledgement() {
+
+  alert(
+    "Acknowledgement PDF will be available after connecting your application database."
+  );
+
+}
+
+</script>
+
+</body>
+</html>
