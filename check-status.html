@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Check Status | Mauli Enterprises</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111827, #2563eb);
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 35px auto;
+      padding: 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      text-align: center;
+      margin-bottom: 8px;
+      color: #1d4ed8;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 22px;
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+    }
+
+    .check-btn {
+      width: 100%;
+      margin-top: 15px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .check-btn:hover {
+      opacity: 0.9;
+    }
+
+    #result {
+      display: none;
+      margin-top: 25px;
+    }
+
+    .status-box {
+      border-radius: 14px;
+      padding: 20px;
+      background: #f8fafc;
+      border-left: 5px solid #2563eb;
+    }
+
+    .status-box p {
+      margin: 10px 0;
+    }
+
+    .status {
+      display: inline-block;
+      background: #f59e0b;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .action-btn {
+      padding: 12px;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+      background: #e5e7eb;
+    }
+
+    .contact-btn {
+      background: #16a34a;
+      color: white;
+    }
+
+    .home-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #111827;
+      color: white;
+      padding: 13px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 10px;
+      color: #666;
+      font-size: 13px;
+    }
+
+    @media (max-width: 500px) {
+      .buttons {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Mauli Enterprises</h1>
+  <p>Xerox and Printing Shop</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+
+    <h2>🔎 Check Application Status</h2>
+
+    <p class="subtitle">
+      Enter your Application / Acknowledgement Number
+    </p>
+
+    <label for="applicationNumber">
+      Application Number
+    </label>
+
+    <input
+      type="text"
+      id="applicationNumber"
+      placeholder="Enter Application Number"
+    >
+
+    <button class="check-btn" onclick="checkStatus()">
+      🔎 Check Status
+    </button>
+
+    <div id="result">
+
+      <div class="status-box">
+
+        <h3>📋 Application Details</h3>
+
+        <p>
+          <strong>Application No:</strong>
+          <span id="appNo"></span>
+        </p>
+
+        <p>
+          <strong>Customer Name:</strong>
+          Demo Customer
+        </p>
+
+        <p>
+          <strong>Service:</strong>
+          PAN Card / Online Service
+        </p>
+
+        <p>
+          <strong>Application Date:</strong>
+          12 September 2026
+        </p>
+
+        <p>
+          <strong>Current Status:</strong>
+          <span class="status">Under Process</span>
+        </p>
+
+        <div class="buttons">
+
+          <button class="action-btn" onclick="downloadApplication()">
+            📥 Application Copy
+          </button>
+
+          <button class="action-btn" onclick="downloadAcknowledgement()">
+            🧾 Acknowledgement
+          </button>
+
+          <button class="action-btn" onclick="window.print()">
+            🖨️ Print
+          </button>
+
+          <button
+            class="action-btn contact-btn"
+            onclick="window.location.href='tel:8390778407'">
+            📞 Contact Shop
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <a href="index.html" class="home-btn">
+      🏠 Back to Home
+    </a>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Mauli Enterprises Xerox and Printing Shop
+  <br>
+  Shivane, Maval
+</footer>
+
+
+<script>
+
+function checkStatus() {
+
+  const applicationNumber =
+    document.getElementById("applicationNumber").value.trim();
+
+  if (applicationNumber === "") {
+    alert("Please enter your Application Number.");
+    return;
+  }
+
+  document.getElementById("appNo").innerText =
+    applicationNumber;
+
+  document.getElementById("result").style.display =
+    "block";
+}
+
+
+function downloadApplication() {
+
+  alert(
+    "Application Copy will be available after connecting the application database."
+  );
+
+}
+
+
+function downloadAcknowledgement() {
+
+  alert(
+    "Acknowledgement will be available after connecting the application database."
+  );
+
+}
+
+</script>
+
+</body>
+</html>
