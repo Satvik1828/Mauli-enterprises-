@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Owner Dashboard | Mauli Enterprises</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .header {
+            height: 70px;
+            background: #08244a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-left h2 {
+            font-size: 21px;
+        }
+
+        .header-left p {
+            font-size: 12px;
+            color: #d5e3f5;
+            margin-top: 3px;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background: #bb2d3b;
+        }
+
+        .layout {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 240px;
+            background: #ffffff;
+            border-right: 1px solid #ddd;
+            padding: 20px 12px;
+        }
+
+        .sidebar-title {
+            font-size: 13px;
+            color: #888;
+            margin: 8px 12px 12px;
+            text-transform: uppercase;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 14px;
+            margin-bottom: 5px;
+            border-radius: 7px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #eaf3ff;
+            color: #0b4d91;
+        }
+
+        .main {
+            flex: 1;
+            padding: 25px;
+            overflow-x: auto;
+        }
+
+        .welcome {
+            background: linear-gradient(135deg, #0b4d91, #08244a);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h1 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .welcome p {
+            color: #d9e8f8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+        }
+
+        .stat-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card h3 {
+            font-size: 28px;
+            color: #08244a;
+        }
+
+        .stat-card p {
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .section-header h2 {
+            color: #08244a;
+            font-size: 20px;
+        }
+
+        .search {
+            padding: 10px 13px;
+            width: 240px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th {
+            background: #08244a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background: #f8fbff;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .processing {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .submitted {
+            background: #cfe2ff;
+            color: #084298;
+        }
+
+        .ready {
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .view-btn {
+            background: #0b4d91;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .service {
+            border: 1px solid #e0e0e0;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .service h3 {
+            color: #08244a;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1000px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .header {
+                padding: 0 15px;
+            }
+
+            .layout {
+                display: block;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                display: flex;
+                overflow-x: auto;
+                gap: 5px;
+                padding: 10px;
+            }
+
+            .sidebar-title {
+                display: none;
+            }
+
+            .sidebar a {
+                white-space: nowrap;
+                margin: 0;
+            }
+
+            .main {
+                padding: 15px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .services {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section-header {
+                display: block;
+            }
+
+            .search {
+                width: 100%;
+                margin-top: 12px;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .stats,
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            .header-left h2 {
+                font-size: 16px;
+            }
+
+            .logout-btn {
+                padding: 8px 10px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="header-left">
+        <h2>👑 Mauli Enterprises</h2>
+        <p>Owner Dashboard</p>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">
+        Logout
+    </button>
+
+</header>
+
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">Dashboard</div>
+
+        <a href="owner-dashboard.html" class="active">
+            📊 Dashboard
+        </a>
+
+        <a href="#">
+            📋 All Works
+        </a>
+
+        <a href="#">
+            ➕ New Work
+        </a>
+
+        <a href="#">
+            ⏳ Pending Works
+        </a>
+
+        <a href="#">
+            ✅ Ready Works
+        </a>
+
+        <a href="#">
+            👥 Customers
+        </a>
+
+        <a href="#">
+            📈 Reports
+        </a>
+
+        <a href="#">
+            ⚙️ Settings
+        </a>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="welcome">
+
+            <h1>Welcome, Owner 👋</h1>
+
+            <p>
+                Manage your printing, Xerox and customer work from here.
+            </p>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <h3>24</h3>
+                <p>Total Works</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <h3>8</h3>
+                <p>Processing</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📤</div>
+                <h3>6</h3>
+                <p>Submitted</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <h3>10</h3>
+                <p>Ready</p>
+            </div>
+
+        </div>
+
+
+        <!-- WORK MANAGEMENT -->
+
+        <div class="section">
+
+            <div class="section-header">
+
+                <h2>📋 Work Management</h2>
+
+                <input
+                    type="text"
+                    class="search"
+                    id="searchBox"
+                    placeholder="Search application..."
+                    onkeyup="searchWorks()"
+                >
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table id="workTable">
+
+                    <thead>
+
+                        <tr>
+                            <th>Application No.</th>
+                            <th>Customer</th>
+                            <th>Service</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <!-- DEMO DATA -->
+
+                        <tr>
+                            <td>DEMO-001</td>
+                            <td>Demo Customer</td>
+                            <td>Xerox / Print</td>
+                            <td>₹100</td>
+                            <td>
+                                <span class="status processing">
+                                    Processing
+                                </span>
+                            </td>
+                            <td>
+                                <button
+                                    class="view-btn"
+                                    onclick="viewWork('DEMO-001')">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>DEMO-002</td>
+                            <td>Demo Customer</td>
+                            <td>Document Print</td>
+                            <td>₹150</td>
+                            <td>
+                                <span class="status submitted">
+                                    Submitted
+                                </span>
+                            </td>
+                            <td>
+                                <button
+                                    class="view-btn"
+                                    onclick="viewWork('DEMO-002')">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>DEMO-003</td>
+                            <td>Demo Customer</td>
+                            <td>Scanning</td>
+                            <td>₹50</td>
+                            <td>
+                                <span class="status ready">
+                                    Ready
+                                </span>
+                            </td>
+                            <td>
+                                <button
+                                    class="view-btn"
+                                    onclick="viewWork('DEMO-003')">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- SERVICES -->
+
+        <div class="section">
+
+            <div class="section-header">
+                <h2>🖨️ Services</h2>
+            </div>
+
+
+            <div class="services">
+
+                <div class="service">
+                    <div class="service-icon">🖨️</div>
+                    <h3>Xerox</h3>
+                </div>
+
+                <div class="service">
+                    <div class="service-icon">📄</div>
+                    <h3>Printing</h3>
+                </div>
+
+                <div class="service">
+                    <div class="service-icon">📑</div>
+                    <h3>Scanning</h3>
+                </div>
+
+                <div class="service">
+                    <div class="service-icon">📚</div>
+                    <h3>Binding</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function logout() {
+
+    window.location.href = "owner-login.html";
+
+}
+
+
+function viewWork(applicationNo) {
+
+    alert(
+        "Application: " +
+        applicationNo +
+        "\n\nDemo work details."
+    );
+
+}
+
+
+function searchWorks() {
+
+    const input =
+        document.getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+    const rows =
+        document.querySelectorAll("#workTable tbody tr");
+
+    rows.forEach(function(row) {
+
+        const text =
+            row.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
