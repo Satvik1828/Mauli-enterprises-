@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Assistance - Mauli Enterprises</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5fb;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+}
+pre {
+    background: #101827;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+button {
+    background: #1261b0;
+    color: white;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 7px;
+}
+a {
+    color: #1261b0;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <p><a href="index.html">← Back to Home</a></p>
+
+    <div class="card">
+        <h1>Digital Assistance</h1>
+        <h2>12th IT Practical</h2>
+        <h3>Program 1: Tourist Places</h3>
+
+        <pre id="program">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Tourist Places&lt;/title&gt;
+    &lt;style&gt;
+        section {
+            background-color: pink;
+            width: 50%;
+            height: 50%;
+            float: right;
+        }
+        aside {
+            width: 50%;
+            float: left;
+        }
+        ol {
+            font-style: italic;
+            font-size: 15pt;
+        }
+        ul {
+            font-weight: bold;
+            font-size: 20pt;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header style="background-color: skyblue; height:100pt"&gt;
+        &lt;h1 align="center"&gt;Tourist Places&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;br&gt;
+    &lt;aside&gt;
+        &lt;h3&gt;City&lt;/h3&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Pune&lt;/li&gt;
+            &lt;li&gt;Banglore&lt;/li&gt;
+            &lt;li&gt;Hyderabad&lt;/li&gt;
+            &lt;li&gt;Delhi&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/aside&gt;
+    &lt;section&gt;
+        &lt;h3&gt;Tourist places in Pune&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Shanivarwada&lt;/li&gt;
+            &lt;li&gt;Kelkar Museum&lt;/li&gt;
+            &lt;li&gt;Singhad fort&lt;/li&gt;
+            &lt;li&gt;Aga Khan Palace&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+        <button onclick="copyProgram()">Copy Program</button>
+        <p id="message"></p>
+    </div>
+</div>
+
+<script>
+function copyProgram() {
+    const text = document.getElementById("program").textContent;
+
+    navigator.clipboard.writeText(text).then(() => {
+        document.getElementById("message").textContent =
+            "Program copied successfully!";
+    }).catch(() => {
+        const range = document.createRange();
+        range.selectNodeContents(document.getElementById("program"));
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.getElementById("message").textContent =
+            "Text selected. Long-press and copy if needed.";
+    });
+}
+</script>
+</body>
+</html>
