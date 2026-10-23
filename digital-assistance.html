@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Assistance - Mauli Enterprises</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5fb;
+    margin: 0;
+    padding: 16px;
+}
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #0001;
+}
+pre {
+    background: #101827;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow-x: auto;
+    font-size: 14px;
+}
+button {
+    background: #1261b0;
+    color: white;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 7px;
+    margin: 5px 3px 5px 0;
+    cursor: pointer;
+}
+button:disabled {
+    background: #999;
+}
+#message {
+    color: green;
+    font-weight: bold;
+}
+a {
+    color: #1261b0;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <p><a href="index.html">← Back to Home</a></p>
+
+    <div class="card">
+        <h1>Digital Assistance</h1>
+        <h2>12th IT Practical Programs</h2>
+
+        <h3 id="programTitle"></h3>
+        <pre id="program"></pre>
+
+        <button onclick="copyProgram()">Copy Program</button>
+        <p id="message" aria-live="polite"></p>
+
+        <hr>
+
+        <button id="prevBtn" onclick="previousProgram()">← Previous</button>
+        <button id="nextBtn" onclick="nextProgram()">Next →</button>
+    </div>
+</div>
+
+<script>
+const programs = [
+{
+title: "Program 1: Tourist Places",
+code: `<!DOCTYPE html>
+<html>
+<head>
+<title>Tourist Places</title>
+<style>
+section {
+    background-color: pink;
+    width: 50%;
+    height: 50%;
+    float: right;
+}
+aside {
+    width: 50%;
+    float: left;
+}
+ol {
+    font-style: italic;
+    font-size: 15pt;
+}
+ul {
+    font-weight: bold;
+    font-size: 20pt;
+}
+</style>
+</head>
+<body>
+<header style="background-color:skyblue;height:100pt">
+<h1 align="center">Tourist Places</h1>
+</header>
+<br>
+<aside>
+<h3>City</h3>
+<ol>
+<li>Pune</li>
+<li>Banglore</li>
+<li>Hyderabad</li>
+<li>Delhi</li>
+</ol>
+</aside>
+<section>
+<h3>Tourist places in Pune</h3>
+<ul>
+<li>Shanivarwada</li>
+<li>Kelkar Museum</li>
+<li>Singhad fort</li>
+<li>Aga Khan Palace</li>
+</ul>
+</section>
+</body>
+</html>`
+},
+{
+title: "Program 2: Tata Group",
+code: `<!DOCTYPE html>
+<html>
+<head>
+<title>Tata Group</title>
+<meta name="author" content="Physical Tags">
+<meta charset="utf-8">
+<style>
+h1 {
+    border-style: dotted;
+}
+p {
+    color: red;
+    font-size: 15pt;
+}
+body {
+    background-color: pink;
+}
+b {
+    text-decoration: overline;
+}
+u {
+    text-align: right;
+}
+</style>
+</head>
+<body>
+<h1 align="center">Tata Sons Private Limited</h1>
+<p>
+66% of the equity share capital of Tata Sons is held by philanthropic trusts, which support education, health, livelihood generation, and art and culture. Each Tata company or enterprise operates independently under the guidance and supervision of its own Board of Directors.
+</p>
+<b>Governance Philosophy</b><br><br>
+<i>Tata Code of Conduct</i><br><br>
+<u>Tata Business Excellence Model (TBEM)</u><br><br>
+<h3>Image of Tata Industries</h3>
+<img src="tata.jpg" width="200" height="250" alt="Tata Industries">
+<br><br>
+<a href="second.html">Second Page</a>
+</body>
+</html>`
+},
+{
+title: "Program 3: Enrollment Form",
+code: `<!DOCTYPE html>
+<html>
+<head>
+<title>Forms</title>
+<meta charset="utf-8">
+<meta name="author" content="Form">
+<style>
+h1 {
+    border-style: dashed;
+}
+body {
+    background-color: aqua;
+}
+</style>
+</head>
+<body>
+<h1 align="center">Enrollment Form</h1>
+<form name="f1">
+Enter Your Name
+<input type="text" name="t1" required>
+<br><br>
+Enter your Email ID
+<input type="email" name="emailid">
+<br><br>
+<input type="submit" name="submitbtn" value="Submit">
+</form>
+<a href="index.html">First Page</a>
+</body>
+</html>`
+}
+];
+
+let currentProgram = 0;
+
+function showProgram() {
+    document.getElementById("programTitle").textContent =
+        programs[currentProgram].title;
+
+    document.getElementById("program").textContent =
+        programs[currentProgram].code;
+
+    document.getElementById("prevBtn").disabled =
+        currentProgram === 0;
+
+    document.getElementById("nextBtn").disabled =
+        currentProgram === programs.length - 1;
+
+    document.getElementById("message").textContent = "";
+    window.scrollTo(0, 0);
+}
+
+function nextProgram() {
+    if (currentProgram < programs.length - 1) {
+        currentProgram++;
+        showProgram();
+    }
+}
+
+function previousProgram() {
+    if (currentProgram > 0) {
+        currentProgram--;
+        showProgram();
+    }
+}
+
+async function copyProgram() {
+    const text = programs[currentProgram].code;
+    const message = document.getElementById("message");
+
+    try {
+        await navigator.clipboard.writeText(text);
+        message.textContent = "Program copied successfully!";
+    } catch (error) {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.focus();
+        area.select();
+
+        const copied = document.execCommand("copy");
+        area.remove();
+
+        message.textContent = copied
+            ? "Program copied successfully!"
+            : "Copy failed. Please select the code and copy it manually.";
+    }
+}
+
+showProgram();
+</script>
+</body>
+</html>
